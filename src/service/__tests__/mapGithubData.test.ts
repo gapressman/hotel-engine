@@ -7,16 +7,18 @@ describe("mapGithubData", () => {
         owner: { login: "foo" },
         name: "bar",
         favoriteColor: "invisible",
+        language: "javascript",
       },
       {
         owner: { login: "bat" },
         name: "biz",
+        language: "haskell",
       },
     ];
 
     expect(mapGithubData(mockResponse)).toEqual([
-      { owner: "foo", repo: "bar" },
-      { owner: "bat", repo: "biz" },
+      { owner: "foo", repo: "bar", language: "javascript" },
+      { owner: "bat", repo: "biz", language: "haskell" },
     ]);
   });
 });
