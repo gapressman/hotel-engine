@@ -41,7 +41,7 @@ export const Search = () => {
   const [sort, setSort] = useState(sortOptions[0].value);
 
   const { data = [], contentStatus } = repos;
-  
+
   //pass in params to ensure state is updated before call is made
   const callGetRepositories = async (searchTerm: string, sort: string) => {
     setRepos({ contentStatus: ContentStatuses.LOADING });
@@ -68,6 +68,7 @@ export const Search = () => {
     e.preventDefault();
 
     callGetRepositories(searchTerm, sort);
+    setSelectedLanguage("");
   };
 
   const languages = new Set();
@@ -81,7 +82,7 @@ export const Search = () => {
     ? data.filter((repo) => repo.language === selectedLanguage)
     : data;
 
-  const handleChange = (event: React.ChangeEvent<{ value: any }>) => {
+  const handleChangeLanguage = (event: React.ChangeEvent<{ value: any }>) => {
     setSelectedLanguage(event.target.value);
   };
 
@@ -135,7 +136,7 @@ export const Search = () => {
                   displayEmpty
                   fullWidth
                   value={selectedLanguage}
-                  onChange={handleChange}
+                  onChange={handleChangeLanguage}
                 >
                   <MenuItem value="" disabled>
                     Filter Language
