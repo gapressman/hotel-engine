@@ -1,26 +1,25 @@
-import { Divider, List, ListItem, Typography } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
-import { RepositoryData } from "../service/api";
+import { Link } from "react-router-dom";
+import { SearchRepositoryData } from "../service/api";
 import { ApiContent } from "../types/ApiContent";
-import { ContentStatuses } from "../types/ContentStatus";
 
 interface ResultsProps {
-  repos: ApiContent<RepositoryData[]>;
+  repos: SearchRepositoryData[];
 }
 
 export const Results: React.FC<ResultsProps> = ({ repos }) => {
-  const {contentStatus, data = []} = repos
-
-  if (contentStatus === ContentStatuses.ERROR){
-    <Typography>There was an error, repositories cannot be displayed at this time.</Typography>
-  }
-
   return (
     <List>
-      {data.map(({ owner, repo }) => (
+      {repos.map(({ owner, repo }) => (
         <ListItem key={repo + owner}>
-          <Typography>{repo}</Typography>
-          <Divider />
+          <Link to={`/repositories/${owner}/${repo}`}>
+            <Typography>{repo}</Typography>
+          </Link>
         </ListItem>
       ))}
     </List>
