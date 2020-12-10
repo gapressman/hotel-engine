@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+## To Run Locally
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`Yarn install`-- to install packages
 
-## Available Scripts
+`Yarn start`
 
-In the project directory, you can run:
+`http://localhost:3000` in browser
 
-### `yarn start`
+## available routes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`/`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`/repositories/<owner>/<repo>`
 
-### `yarn test`
+## To run tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`Yarn test` this command takes an optional argument to say which test files. Additionally jest some customization in tests to decide which run.
 
-### `yarn build`
+A few examples an "x" prefixing a block:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`xit()`
+`xdescribe()`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+.skip, and .only
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`it.skip()`
+`it.only`
 
-### `yarn eject`
+## Notable Components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`<ContentSwitch />`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This component is to handle async calls so not to have to repeatedly handle loading and error states. Similar to what `React Suspense` does/will do, but suspense is still in experimental limbo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+One thing I'd do differently inretrospect is change how the success-view gets displayed. I don't like that I have to tell typescript the data is there. I think it can be rewritten so overriding the compiler with a `!` isn't necessary.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Packages
 
-## Learn More
+`React Router` for routing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`Material-ui` as a component library
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`Axios` for api calls
+
+`React-testing library`
+
+## Testing
+
+I tried to give examples of different things I would test. Some places are well tested, others are lacking. For example I tested the api calls in a vacuum, but didn't test interacting with the components to run them.
