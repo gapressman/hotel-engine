@@ -1,5 +1,5 @@
 export enum ContentStatuses {
-    SUCCESS = 'SUCCESS',
-    ERROR = 'ERROR',
-    LOADING = 'LOADING'
+  SUCCESS = "SUCCESS",
+  ERROR = "ERROR",
+  LOADING = "LOADING",
 }
